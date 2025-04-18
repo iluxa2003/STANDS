@@ -8,3 +8,14 @@ var x = 3;
 console.log(x); // 3
 
 var s = 0;
+
+// let
+
+
+// error
+// let c = 1
+// function bar() {
+//     let c = 3;
+//     console.log(c);
+// }
+// bar();

@@ -13,3 +13,5 @@ console.log(add.length); // 3
 
 function add1(a = "1234") {}
 console.log(add1.length); // 0
+
+// caller
