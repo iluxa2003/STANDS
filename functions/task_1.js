@@ -1,23 +1,31 @@
-const obj = {
+const obj1 = {
+  name: 'First function',
   funcHelp() {
-    console.log(this);
+    return this;
   },
-  func: () => {
-    return obj.funcHelp();
+  arrowFunc: () => {
+    return obj1.funcHelp();
   },
 };
 
-obj.func(); // calls obj :)
+console.log(obj1.arrowFunc()); // calls obj :)
 
+const obj2 = {
+  name: 'Second function',
+  funcHelp() {
+    return this;
+  },
+  arrowFunc: (callback) => {
+    return callback;
+  },
+};
 
-// console.log(x());
+console.log(obj2.arrowFunc(obj2.funcHelp())); // calls obj :)
+var obj3 = {
+  name: 'Third function',
+  arrowFunc: () => {
+    return new Function('return this.obj3');
+  },
+};
 
-// const x = new Function("return this"); // calls window
-
-// const obj1 = {
-//     func: () => {
-//       return new Function("return console.log(this)")(); 
-//     },
-// };
-// obj1.func(); // calls window
-
+console.log(obj3.arrowFunc()()); // work only in non strict mode!!!!
