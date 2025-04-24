@@ -8,3 +8,13 @@ const operation = 'x + y';
 const dynamicFunk = new Function('x', 'y', `return ${operation}`);
 
 console.log(dynamicFunk(5, 3)); // 8
+
+const person = {
+  arrowFunk: () => {
+    return this;
+  },
+  funk: new Function('x', 'y', 'z', 'return x + y + z'),
+};
+
+console.log(person.arrowFunk());
+console.log(person.funk(1, 2, 3));

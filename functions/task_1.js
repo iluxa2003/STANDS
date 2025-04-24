@@ -24,8 +24,8 @@ console.log(obj2.arrowFunc(obj2.funcHelp())); // calls obj :)
 var obj3 = {
   name: 'Third function',
   arrowFunc: () => {
-    return new Function('return this.obj3');
+    return this.obj3;
   },
 };
 
-console.log(obj3.arrowFunc()()); // work only in non strict mode!!!!
+console.log(obj3.arrowFunc()); // work only in non strict mode!!!!
