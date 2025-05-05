@@ -18,3 +18,7 @@ const person = {
 
 console.log(person.arrowFunk());
 console.log(person.funk(1, 2, 3));
+
+const construct = new Function('return this');
+
+console.log(construct.call(person));

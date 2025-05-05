@@ -1,3 +1,5 @@
+// function currying
+
 function add1(a) {
   return function (b) {
     return function (c) {
