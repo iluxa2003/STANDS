@@ -47,6 +47,9 @@ console.log(arr9.reduce((x, i) => x + i, 0));
 console.log(arr9.reduce((x, i) => x + i, 1));
 
 const arr10 = [];
+console.log('Some method:');
+console.log(arr10.some(() => x % 2));
+
 const arr11 = [];
 const arr12 = [];
 const arr13 = [];
