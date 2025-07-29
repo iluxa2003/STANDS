@@ -1,0 +1,19 @@
+{
+  "name": "todolist",
+  "version": "1.0.0",
+  "description": "This is the data storage for ToDoList",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "example",
+    "data",
+    "smth"
+  ],
+  "author": "Ilya yakovlev",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
