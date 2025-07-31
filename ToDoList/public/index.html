@@ -9,17 +9,29 @@
   <body>
     <header></header>
     <main>
-      <form action="submit" method="get">
-        Name: <input type="name" name="name" /><br />
-        Task Name: <input type="text" name="task_name" /><br />
-        Description: <input type="text" name="description" /><br />
-        <input type="submit" value="Submit" />
-      </form>
-
       <section>
-        <div class="task_container"></div>
+        <form>
+          <div class="new-task__controls">
+            <div class="new-task__control">
+              <label>Your name</label>
+              <input type="text" onChange="{titleChangeHandler}" />
+            </div>
+            <div class="new-task__control">
+              <label>Task name</label>
+              <input type="text" onChange="{amountChangeHandler}" />
+            </div>
+            <div class="new-task__control">
+              <label>Task description</label>
+              <textarea></textarea>
+            </div>
+          </div>
+          <div class="new-task__actions">
+            <button type="submit">Add task</button>
+          </div>
+        </form>
       </section>
     </main>
     <footer></footer>
+    <script src="./index.js" type="module"></script>
   </body>
 </html>

@@ -15,4 +15,18 @@ app.post('/api', (request, response) => {
   });
 });
 
-app.get('/api', (request, response) => {});
+app.get('/api', (request, response) => {
+  console.log(request);
+  response.json({
+    status: 'success',
+    database,
+  });
+});
+
+app.delete('/api', (request, response) => {
+  console.log(request);
+  response.json({
+    status: 'success',
+    database,
+  });
+});

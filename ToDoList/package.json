@@ -6,14 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [
-    "example",
-    "data",
-    "smth"
-  ],
-  "author": "Ilya yakovlev",
+  "author": "Ilya Yakovlev",
   "license": "MIT",
   "dependencies": {
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "normalize.css": "^8.0.1"
   }
 }
