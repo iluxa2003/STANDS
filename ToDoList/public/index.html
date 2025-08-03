@@ -10,19 +10,33 @@
     <header></header>
     <main>
       <section>
-        <form>
+        <form class="controls">
           <div class="new-task__controls">
             <div class="new-task__control">
               <label>Your name</label>
-              <input type="text" onChange="{titleChangeHandler}" />
+              <input
+                type="text"
+                class="userName-label"
+                value="Illia"
+                required="true"
+              />
             </div>
             <div class="new-task__control">
               <label>Task name</label>
-              <input type="text" onChange="{amountChangeHandler}" />
+              <input
+                type="text"
+                class="taskName-label"
+                value="task1"
+                required="true"
+              />
             </div>
             <div class="new-task__control">
               <label>Task description</label>
-              <textarea></textarea>
+              <textarea
+                class="taskDescription-label"
+                value="This is a simple description"
+                required="true"
+              ></textarea>
             </div>
           </div>
           <div class="new-task__actions">
@@ -30,8 +44,11 @@
           </div>
         </form>
       </section>
+      <section class="tasks">
+        <div class="tasks-container"></div>
+      </section>
     </main>
     <footer></footer>
-    <script src="./index.js" type="module"></script>
+    <script src="./index.js"></script>
   </body>
 </html>
