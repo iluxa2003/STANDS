@@ -39,8 +39,18 @@ var userName = document.getElementsByClassName('userName-label')[0];
 var taskName = document.getElementsByClassName('taskName-label')[0];
 var taskDescription = document.getElementsByClassName('taskDescription-label')[0];
 var tasks = document.getElementsByClassName('tasks-container')[0];
-console.log(taskName);
 addPanel.addEventListener('submit', addTask);
+fetch('/api')
+    .then(function (response) { return response.json(); })
+    .then(function (json) {
+    if (json.status === 'success') {
+        tasks.innerHTML = '';
+        json.database.forEach(function (item) {
+            var newTask = "\n          <div class='task-item'>\n            <span class='task-userName'>".concat(item.user, "</span>\n            <span class='task-item__name'>").concat(item.task, "</span>\n            <span class='task-item__description'>").concat(item.description, "</span>\n          </div>\n      ");
+            tasks.insertAdjacentHTML('beforeend', newTask);
+        });
+    }
+});
 function addTask(event) {
     return __awaiter(this, void 0, void 0, function () {
         var user, task, description, data, options, response, json;

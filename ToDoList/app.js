@@ -7,7 +7,7 @@ app.use(express.json());
 const database = [];
 
 app.post('/api', (request, response) => {
-  console.log('I got a request');
+  console.log('I got a post request');
   database.push(request.body);
   console.log(database);
   response.json({
@@ -16,13 +16,13 @@ app.post('/api', (request, response) => {
   });
 });
 
-// app.get('/api', (request, response) => {
-//   console.log(request);
-//   response.json({
-//     status: 'success',
-//     database,
-//   });
-// });
+app.get('/api', (request, response) => {
+  console.log(request);
+  response.json({
+    status: 'success',
+    database,
+  });
+});
 
 // app.delete('/api', (request, response) => {
 //   console.log(request);

@@ -17,6 +17,7 @@ body {
   gap: 1rem;
   margin-bottom: 1rem;
   text-align: left;
+  justify-content: space-between
 }
 
 .new-task__control label {
@@ -29,7 +30,7 @@ body {
   font: inherit;
   padding: 0.5rem;
   border-radius: 6px;
-  border: 1px solid #ccc;
+  border: 1px solid #fff;
   width: 20rem;
   max-width: 100%;
 }
@@ -38,7 +39,7 @@ body {
   font: inherit;
   padding: 0.5rem;
   border-radius: 6px;
-  border: 1px solid #ccc;
+  border: 1px solid #fff;
   width: 20rem;
   max-width: 100%;
   resize: none;
@@ -53,7 +54,7 @@ body {
   padding: 1rem 2rem;
   border: 1px solid #40005d;
   background-color: #40005d;
-  color: white;
+  color: #fff;
   border-radius: 12px;
   margin-right: 1rem;
 }
@@ -74,10 +75,12 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.5rem;
+  flex-wrap: wrap;
+  padding: 2rem;
   margin: 1rem 0;
   background-color: #4b4b4b;
   color: #fff;
+  border-radius: 10px;
 }
 
 .tasks-container {
@@ -89,13 +92,11 @@ body {
   /* visibility: hidden; */
 }
 
-.task-item__description {
-  font-size: 1rem;
-  font-weight: bold;
-  color: white;
+.task-userName {
+  color: #fff;
   background-color: #40005d;
-  border: 1px solid white;
-  padding: 0.5rem;
+  border: 1px solid #fff;
+  padding: 0.3rem;
   border-radius: 12px;
 }
 
