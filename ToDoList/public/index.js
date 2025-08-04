@@ -43,7 +43,8 @@ addPanel.addEventListener('submit', addTask);
 fetch('/api')
     .then(function (response) { return response.json(); })
     .then(function (json) {
-    if (json.status === 'success') {
+    if (json.status === 'success' && json.database.length != 0) {
+        tasks.style.visibility = "visible";
         tasks.innerHTML = '';
         json.database.forEach(function (item) {
             var newTask = "\n          <div class='task-item'>\n            <span class='task-userName'>".concat(item.user, "</span>\n            <span class='task-item__name'>").concat(item.task, "</span>\n            <span class='task-item__description'>").concat(item.description, "</span>\n          </div>\n      ");
@@ -78,6 +79,7 @@ function addTask(event) {
                     json = _a.sent();
                     console.log(json);
                     if (json.status === 'success') {
+                        tasks.style.visibility = "visible";
                         tasks.innerHTML = '';
                         json.database.forEach(function (item) {
                             var newTask = "\n        <div class='task-item'>\n          <span class='task-userName'>".concat(item.user, "</span>\n          <span class='task-item__name'>").concat(item.task, "</span>\n          <span class='task-item__description'>").concat(item.description, "</span>\n        </div>\n      ");

@@ -20,7 +20,8 @@ interface ApiResponse {
 fetch('/api')
   .then((response) => response.json())
   .then((json: ApiResponse) => {
-    if (json.status === 'success') {
+    if (json.status === 'success' && json.database.length != 0) {
+      tasks.style.visibility = "visible";
       tasks.innerHTML = '';
       json.database.forEach((item: TaskData) => {
         const newTask = `
@@ -58,6 +59,7 @@ async function addTask(event: Event): Promise<void> {
   console.log(json);
 
   if (json.status === 'success') {
+    tasks.style.visibility = "visible";
     tasks.innerHTML = '';
     json.database.forEach((item: TaskData) => {
       const newTask = `

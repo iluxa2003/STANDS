@@ -82,6 +82,9 @@ body {
   color: #fff;
   border-radius: 10px;
 }
+.task-item span{
+  overflow: hidden;
+}
 
 .tasks-container {
   padding: 1rem;
@@ -89,7 +92,7 @@ body {
   margin: 2rem auto;
   width: 50rem;
   max-width: 95%;
-  /* visibility: hidden; */
+  visibility: hidden;
 }
 
 .task-userName {
@@ -106,7 +109,7 @@ body {
   }
 
   .new-task__controls {
-  justify-content: space-around;
-}
+    justify-content: space-around;
+  }
 }
   
