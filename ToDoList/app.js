@@ -24,10 +24,14 @@ app.get('/api', (request, response) => {
   });
 });
 
-// app.delete('/api', (request, response) => {
-//   console.log(request);
-//   response.json({
-//     status: 'success',
-//     database,
-//   });
-// });
+app.delete('/api', (request, response) => {
+  const index = database.findIndex((task) => task.id === request.body.id);
+  if (index > -1) {
+    database.splice(index, 1);
+  }
+  response.json({
+    status: 'success',
+    database,
+    index,
+  });
+});

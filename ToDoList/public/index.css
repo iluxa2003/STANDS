@@ -103,6 +103,18 @@ body {
   border-radius: 12px;
 }
 
+.task-item__header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 1rem;
+  margin: 1rem 0;
+  background-color: #4b4b4b;
+  color: #fff;
+  border-radius: 10px;
+}
+
 @media (max-width:1600px) {
   .new-task__actions{
     text-align: center;

@@ -10,6 +10,7 @@ interface TaskData {
   user: string;
   task: string;
   description: string;
+  id: string;
 }
 
 interface ApiResponse {
@@ -17,23 +18,56 @@ interface ApiResponse {
   database: TaskData[];
 }
 
+function showItems(json) {
+    if (json.status === 'success') {
+    tasks.style.visibility = "visible";
+    tasks.innerHTML = `
+        <div class='task-item__header'>
+          <span class='task-userName__header'>User name</span>
+          <span class='task-item__name__header'>Task name</span>
+          <span class='task-item__description__header'>Task description</span>
+        </div>`;
+    json.database.forEach((item: TaskData) => {
+    const newTask = document.createElement('div');
+    newTask.classList.add('task-item');
+    newTask.id = item.id;
+        
+    newTask.innerHTML = `
+        <span class='task-userName'>${item.user}</span>
+        <span class='task-item__name'>${item.task}</span>
+        <span class='task-item__description'>${item.description}</span>
+    `;
+
+    newTask.addEventListener('click', (event) => {
+      event.preventDefault();
+      handleTaskClick(item.user, item.task, item.description, item.id);
+    });
+
+    tasks.appendChild(newTask);
+    });
+  }
+}
+
+async function handleTaskClick(user: string, task: string, description: string, id: string) {
+  const data: TaskData = { user, task, description, id };
+  const options: RequestInit = {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  };
+  const response = await fetch('/api', options);
+  const json: ApiResponse = await response.json();
+  console.log(json);
+
+  showItems(json);
+}
+
 fetch('/api')
   .then((response) => response.json())
   .then((json: ApiResponse) => {
-    if (json.status === 'success' && json.database.length != 0) {
-      tasks.style.visibility = "visible";
-      tasks.innerHTML = '';
-      json.database.forEach((item: TaskData) => {
-        const newTask = `
-          <div class='task-item'>
-            <span class='task-userName'>${item.user}</span>
-            <span class='task-item__name'>${item.task}</span>
-            <span class='task-item__description'>${item.description}</span>
-          </div>
-      `;
-      tasks.insertAdjacentHTML('beforeend', newTask);
-    });
-  }}
+  showItems(json)}
 );
 
 async function addTask(event: Event): Promise<void> {
@@ -42,8 +76,9 @@ async function addTask(event: Event): Promise<void> {
   const user = userName.value;
   const task = taskName.value;
   const description = taskDescription.value;
-
-  const data: TaskData = { user, task, description };
+  const id = Math.random().toString();
+    
+  const data: TaskData = { user, task, description, id };
   console.log(JSON.stringify(data));
 
   const options: RequestInit = {
@@ -58,18 +93,5 @@ async function addTask(event: Event): Promise<void> {
   const json: ApiResponse = await response.json();
   console.log(json);
 
-  if (json.status === 'success') {
-    tasks.style.visibility = "visible";
-    tasks.innerHTML = '';
-    json.database.forEach((item: TaskData) => {
-      const newTask = `
-        <div class='task-item'>
-          <span class='task-userName'>${item.user}</span>
-          <span class='task-item__name'>${item.task}</span>
-          <span class='task-item__description'>${item.description}</span>
-        </div>
-      `;
-      tasks.insertAdjacentHTML('beforeend', newTask);
-    });
-  }
+  showItems(json)
 }

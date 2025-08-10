@@ -40,21 +40,58 @@ var taskName = document.getElementsByClassName('taskName-label')[0];
 var taskDescription = document.getElementsByClassName('taskDescription-label')[0];
 var tasks = document.getElementsByClassName('tasks-container')[0];
 addPanel.addEventListener('submit', addTask);
+function showItems(json) {
+    if (json.status === 'success') {
+        tasks.style.visibility = "visible";
+        tasks.innerHTML = "\n        <div class='task-item__header'>\n          <span class='task-userName__header'>User name</span>\n          <span class='task-item__name__header'>Task name</span>\n          <span class='task-item__description__header'>Task description</span>\n        </div>";
+        json.database.forEach(function (item) {
+            var newTask = document.createElement('div');
+            newTask.classList.add('task-item');
+            newTask.id = item.id;
+            newTask.innerHTML = "\n        <span class='task-userName'>".concat(item.user, "</span>\n        <span class='task-item__name'>").concat(item.task, "</span>\n        <span class='task-item__description'>").concat(item.description, "</span>\n    ");
+            newTask.addEventListener('click', function (event) {
+                event.preventDefault();
+                handleTaskClick(item.user, item.task, item.description, item.id);
+            });
+            tasks.appendChild(newTask);
+        });
+    }
+}
+function handleTaskClick(user, task, description, id) {
+    return __awaiter(this, void 0, void 0, function () {
+        var data, options, response, json;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    data = { user: user, task: task, description: description, id: id };
+                    options = {
+                        method: 'DELETE',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(data),
+                    };
+                    return [4 /*yield*/, fetch('/api', options)];
+                case 1:
+                    response = _a.sent();
+                    return [4 /*yield*/, response.json()];
+                case 2:
+                    json = _a.sent();
+                    console.log(json);
+                    showItems(json);
+                    return [2 /*return*/];
+            }
+        });
+    });
+}
 fetch('/api')
     .then(function (response) { return response.json(); })
     .then(function (json) {
-    if (json.status === 'success' && json.database.length != 0) {
-        tasks.style.visibility = "visible";
-        tasks.innerHTML = '';
-        json.database.forEach(function (item) {
-            var newTask = "\n          <div class='task-item'>\n            <span class='task-userName'>".concat(item.user, "</span>\n            <span class='task-item__name'>").concat(item.task, "</span>\n            <span class='task-item__description'>").concat(item.description, "</span>\n          </div>\n      ");
-            tasks.insertAdjacentHTML('beforeend', newTask);
-        });
-    }
+    showItems(json);
 });
 function addTask(event) {
     return __awaiter(this, void 0, void 0, function () {
-        var user, task, description, data, options, response, json;
+        var user, task, description, id, data, options, response, json;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -62,7 +99,8 @@ function addTask(event) {
                     user = userName.value;
                     task = taskName.value;
                     description = taskDescription.value;
-                    data = { user: user, task: task, description: description };
+                    id = Math.random().toString();
+                    data = { user: user, task: task, description: description, id: id };
                     console.log(JSON.stringify(data));
                     options = {
                         method: 'POST',
@@ -78,14 +116,7 @@ function addTask(event) {
                 case 2:
                     json = _a.sent();
                     console.log(json);
-                    if (json.status === 'success') {
-                        tasks.style.visibility = "visible";
-                        tasks.innerHTML = '';
-                        json.database.forEach(function (item) {
-                            var newTask = "\n        <div class='task-item'>\n          <span class='task-userName'>".concat(item.user, "</span>\n          <span class='task-item__name'>").concat(item.task, "</span>\n          <span class='task-item__description'>").concat(item.description, "</span>\n        </div>\n      ");
-                            tasks.insertAdjacentHTML('beforeend', newTask);
-                        });
-                    }
+                    showItems(json);
                     return [2 /*return*/];
             }
         });
