@@ -115,6 +115,22 @@ body {
   border-radius: 10px;
 }
 
+.backdrop-modal{
+  visibility: hidden;
+  opacity: 0.5;
+
+  display: flex;
+  flex-direction: none;
+  justify-content: center;
+  align-content: none;
+  align-items: center;
+  top: 0px;
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.2);
+}
+
 @media (max-width:1600px) {
   .new-task__actions{
     text-align: center;

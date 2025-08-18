@@ -3,6 +3,7 @@ const userName = document.getElementsByClassName('userName-label')[0] as HTMLInp
 const taskName = document.getElementsByClassName('taskName-label')[0] as HTMLInputElement;
 const taskDescription = document.getElementsByClassName('taskDescription-label')[0] as HTMLTextAreaElement;
 const tasks = document.getElementsByClassName('tasks-container')[0] as HTMLElement;
+const backdropModal = document.getElementsByClassName('backdrop-modal')[0] as HTMLElement;
 
 addPanel.addEventListener('submit', addTask);
 
@@ -94,4 +95,20 @@ async function addTask(event: Event): Promise<void> {
   console.log(json);
 
   showItems(json)
+}
+
+function createWindow (item) {
+    const modal = backdropModal.children[0] as HTMLElement;
+        
+    modal.innerHTML = `
+      <div>
+        <div>
+          <span class='task-userName'>${item.user}</span>
+          <span class='task-item__name'>${item.task}</span>
+        </div>
+        <div>
+           <span class='task-item__description'>${item.description}</span>
+        </div>
+      </div>  
+    `;
 }
