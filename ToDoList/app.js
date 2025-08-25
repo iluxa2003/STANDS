@@ -25,7 +25,10 @@ app.get('/api', (request, response) => {
 });
 
 app.delete('/api', (request, response) => {
-  const index = database.findIndex((task) => task.id === request.body.id);
+  console.log(request.body.id);
+  console.log(database);
+
+  const index = database.findIndex((task) => task.id == request.body.id);
   if (index > -1) {
     database.splice(index, 1);
   }

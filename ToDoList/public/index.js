@@ -39,7 +39,38 @@ var userName = document.getElementsByClassName('userName-label')[0];
 var taskName = document.getElementsByClassName('taskName-label')[0];
 var taskDescription = document.getElementsByClassName('taskDescription-label')[0];
 var tasks = document.getElementsByClassName('tasks-container')[0];
+var backdropModal = document.getElementsByClassName('backdrop-modal')[0];
 addPanel.addEventListener('submit', addTask);
+function closeModal() {
+    backdropModal.style.visibility = "hidden";
+}
+function deleteTask(id) {
+    return __awaiter(this, void 0, void 0, function () {
+        var options, response, json;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    options = {
+                        method: 'DELETE',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ id: id }),
+                    };
+                    return [4 /*yield*/, fetch('/api', options)];
+                case 1:
+                    response = _a.sent();
+                    return [4 /*yield*/, response.json()];
+                case 2:
+                    json = _a.sent();
+                    console.log(json);
+                    closeModal();
+                    showItems(json);
+                    return [2 /*return*/];
+            }
+        });
+    });
+}
 function showItems(json) {
     if (json.status === 'success') {
         tasks.style.visibility = "visible";
@@ -58,31 +89,11 @@ function showItems(json) {
     }
 }
 function handleTaskClick(user, task, description, id) {
-    return __awaiter(this, void 0, void 0, function () {
-        var data, options, response, json;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    data = { user: user, task: task, description: description, id: id };
-                    options = {
-                        method: 'DELETE',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify(data),
-                    };
-                    return [4 /*yield*/, fetch('/api', options)];
-                case 1:
-                    response = _a.sent();
-                    return [4 /*yield*/, response.json()];
-                case 2:
-                    json = _a.sent();
-                    console.log(json);
-                    showItems(json);
-                    return [2 /*return*/];
-            }
-        });
-    });
+    var modal = backdropModal.children[0];
+    var data = { user: user, task: task, description: description, id: id };
+    console.log(data);
+    modal.innerHTML = "\n      <button class=\"modal_close-botton\" type=\"button\" onclick=\"closeModal();\">\n        Close\n      </button>\n      <div>\n        <div>\n          <span class='task-userName'>".concat(data.user, "</span>\n          <span class='task-item__name'>").concat(data.task, "</span>\n        </div>\n        <div>\n           <span class='task-item__description'>").concat(data.description, "</span>\n        </div>\n      </div>\n      <button class=\"modal_delete-botton\" type=\"button\" onclick=\"deleteTask(").concat(data.id, ");\">\n        Delete\n      </button>  \n    ");
+    backdropModal.style.visibility = "visible";
 }
 fetch('/api')
     .then(function (response) { return response.json(); })
@@ -121,4 +132,8 @@ function addTask(event) {
             }
         });
     });
+}
+function createWindow(item) {
+    var modal = backdropModal.children[0];
+    modal.innerHTML = "\n      <div>\n        <div>\n          <span class='task-userName'>".concat(item.user, "</span>\n          <span class='task-item__name'>").concat(item.task, "</span>\n        </div>\n        <div>\n           <span class='task-item__description'>").concat(item.description, "</span>\n        </div>\n      </div>  \n    ");
 }

@@ -5,7 +5,9 @@ const taskDescription = document.getElementsByClassName('taskDescription-label')
 const tasks = document.getElementsByClassName('tasks-container')[0] as HTMLElement;
 const backdropModal = document.getElementsByClassName('backdrop-modal')[0] as HTMLElement;
 
+
 addPanel.addEventListener('submit', addTask);
+
 
 interface TaskData {
   user: string;
@@ -17,6 +19,26 @@ interface TaskData {
 interface ApiResponse {
   status: string;
   database: TaskData[];
+}
+
+function closeModal() {
+  backdropModal.style.visibility = "hidden";
+}
+
+
+async function deleteTask(id: string) {   
+  const options: RequestInit = {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({id}),
+  };
+  const response = await fetch('/api', options);
+  const json: ApiResponse = await response.json();
+  console.log(json);
+  closeModal();
+  showItems(json);
 }
 
 function showItems(json) {
@@ -49,20 +71,29 @@ function showItems(json) {
   }
 }
 
-async function handleTaskClick(user: string, task: string, description: string, id: string) {
+function handleTaskClick(user: string, task: string, description: string, id: string) {
+  const modal = backdropModal.children[0] as HTMLElement;
   const data: TaskData = { user, task, description, id };
-  const options: RequestInit = {
-    method: 'DELETE',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data),
-  };
-  const response = await fetch('/api', options);
-  const json: ApiResponse = await response.json();
-  console.log(json);
-
-  showItems(json);
+  console.log(data);
+  
+  modal.innerHTML = `
+      <button class="modal_close-botton" type="button" onclick="closeModal();">
+        Close
+      </button>
+      <div>
+        <div>
+          <span class='task-userName'>${data.user}</span>
+          <span class='task-item__name'>${data.task}</span>
+        </div>
+        <div>
+           <span class='task-item__description'>${data.description}</span>
+        </div>
+      </div>
+      <button class="modal_delete-botton" type="button" onclick="deleteTask(${data.id});">
+        Delete
+      </button>  
+    `;
+  backdropModal.style.visibility = "visible";
 }
 
 fetch('/api')
