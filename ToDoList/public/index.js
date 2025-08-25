@@ -42,7 +42,7 @@ var tasks = document.getElementsByClassName('tasks-container')[0];
 var backdropModal = document.getElementsByClassName('backdrop-modal')[0];
 addPanel.addEventListener('submit', addTask);
 function closeModal() {
-    backdropModal.style.visibility = "hidden";
+    backdropModal.style.visibility = 'hidden';
 }
 function deleteTask(id) {
     return __awaiter(this, void 0, void 0, function () {
@@ -73,7 +73,7 @@ function deleteTask(id) {
 }
 function showItems(json) {
     if (json.status === 'success') {
-        tasks.style.visibility = "visible";
+        tasks.style.visibility = 'visible';
         tasks.innerHTML = "\n        <div class='task-item__header'>\n          <span class='task-userName__header'>User name</span>\n          <span class='task-item__name__header'>Task name</span>\n          <span class='task-item__description__header'>Task description</span>\n        </div>";
         json.database.forEach(function (item) {
             var newTask = document.createElement('div');
@@ -92,8 +92,8 @@ function handleTaskClick(user, task, description, id) {
     var modal = backdropModal.children[0];
     var data = { user: user, task: task, description: description, id: id };
     console.log(data);
-    modal.innerHTML = "\n      <button class=\"modal_close-botton\" type=\"button\" onclick=\"closeModal();\">\n        Close\n      </button>\n      <div>\n        <div>\n          <span class='task-userName'>".concat(data.user, "</span>\n          <span class='task-item__name'>").concat(data.task, "</span>\n        </div>\n        <div>\n           <span class='task-item__description'>").concat(data.description, "</span>\n        </div>\n      </div>\n      <button class=\"modal_delete-botton\" type=\"button\" onclick=\"deleteTask(").concat(data.id, ");\">\n        Delete\n      </button>  \n    ");
-    backdropModal.style.visibility = "visible";
+    modal.innerHTML = "\n      <button class=\"modal_close-botton\" type=\"button\" onclick=\"closeModal();\">\n        Close\n      </button>\n      <div class=\"task\">\n        <div class='task-userName'>Username: ".concat(data.user, "</div>\n        <div class='task-item__name'>Task name: ").concat(data.task, "</div>\n        <div>Description:</div>\n        <div class='task-item__description'>").concat(data.description, "</div>\n      </div>\n      <button class=\"modal_delete-botton\" type=\"button\" onclick=\"deleteTask(").concat(data.id, ");\">\n        Delete\n      </button>  \n    ");
+    backdropModal.style.visibility = 'visible';
 }
 fetch('/api')
     .then(function (response) { return response.json(); })
