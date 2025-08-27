@@ -44,6 +44,7 @@ body {
   max-width: 100%;
   resize: none;
 }
+
 .new-task__actions {
   text-align: right;
 }
@@ -82,6 +83,7 @@ body {
   color: #fff;
   border-radius: 10px;
 }
+
 .task-item span{
   overflow: hidden;
 }
@@ -95,13 +97,13 @@ body {
   visibility: hidden;
 }
 
-.task-userName {
+/* .task-userName {
   color: #fff;
   background-color: #40005d;
   border: 1px solid #fff;
   padding: 0.3rem;
   border-radius: 12px;
-}
+} */
 
 .task-item__header{
   display: flex;
@@ -133,6 +135,7 @@ body {
 .task-modal{
   display: flex;
   align-items: center;
+  justify-content: space-around;
   position: relative;
   border-radius: 4px;
   min-width: 350px;
@@ -151,6 +154,39 @@ body {
   border: 1px solid rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
   border-radius: 50%;
+}
+
+.modal_close-botton{
+  position: absolute;
+  top: 4%;
+  right: 5%;
+  cursor: pointer;
+  padding: 4px 4px;
+  border: 1px solid #40005d;
+  border-radius: 5px;
+  background-color: #40005d;
+  color: #fff;
+}
+
+.modal_delete-botton{
+  position: absolute;
+  bottom: 4%;
+  right: 5%;
+  cursor: pointer;
+  padding: 4px 4px;
+  border: 1px solid #40005d;
+  border-radius: 5px;
+  background-color: #40005d;
+  color: #fff;
+}
+
+.task-header{
+
+}
+
+.task{
+  display: flex;
+  flex-direction: column;
 }
 
 @media (max-width:1600px) {
