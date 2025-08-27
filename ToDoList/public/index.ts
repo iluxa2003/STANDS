@@ -25,7 +25,6 @@ function closeModal() {
   backdropModal.style.visibility = "hidden";
 }
 
-
 async function deleteTask(id: string) {   
   const options: RequestInit = {
     method: 'DELETE',

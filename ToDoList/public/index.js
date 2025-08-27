@@ -92,7 +92,7 @@ function handleTaskClick(user, task, description, id) {
     var modal = backdropModal.children[0];
     var data = { user: user, task: task, description: description, id: id };
     console.log(data);
-    modal.innerHTML = "\n      <button class=\"modal_close-botton\" type=\"button\" onclick=\"closeModal();\">\n        Close\n      </button>\n      <div>\n        <div>\n          <span class='task-userName'>".concat(data.user, "</span>\n          <span class='task-item__name'>").concat(data.task, "</span>\n        </div>\n        <div>\n           <span class='task-item__description'>").concat(data.description, "</span>\n        </div>\n      </div>\n      <button class=\"modal_delete-botton\" type=\"button\" onclick=\"deleteTask(").concat(data.id, ");\">\n        Delete\n      </button>  \n    ");
+    modal.innerHTML = "\n      <button class=\"modal_close-botton\" type=\"button\" onclick=\"closeModal();\">\n        Close\n      </button>\n      <div>\n        <div>\n          <span class='task-userName'>".concat(data.user, "</span>\n          <span class='task-item__name'>").concat(data.task, "</span>\n        </div>\n        <div>\n           <span class='task-item__description'>").concat(data.description, "</span>\n        </div>\n      </div>\n      <button class=\"modal_delete-botton\" type=\"button\" onclick=\"deleteTask(").concat({ data: 11, id: 11 }, ");\">\n        Delete\n      </button>  \n    ");
     backdropModal.style.visibility = "visible";
 }
 fetch('/api')
