@@ -8,7 +8,7 @@ html {
 
 body {
   margin: 0;
-  background-color: #3f3f3f;
+  background-color: #F5F6F8;
 }
 
 .new-task__controls {
@@ -79,31 +79,43 @@ body {
   flex-wrap: wrap;
   padding: 2rem;
   margin: 1rem 0;
-  background-color: #4b4b4b;
-  color: #fff;
+  background-color: #ffffff;
   border-radius: 10px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .task-item span{
   overflow: hidden;
 }
 
+.task_container{
+  display: flex;
+  align-items: flex-start;
+}
+
+.task-checkbox{
+  accent-color:lime;
+  color:#fff;
+  border: 1px #011;
+  margin-right: 20px;
+}
+
+/* .task-checkbox:checked {
+  width: 20px;
+  height: 20px;
+  appearance: none;
+  background: lime;
+  border: 2px solid #555;
+  cursor: pointer;
+} */
+
 .tasks-container {
   padding: 1rem;
-  background-color: rgb(31, 31, 31);
   margin: 2rem auto;
   width: 50rem;
   max-width: 95%;
   visibility: hidden;
 }
-
-/* .task-userName {
-  color: #fff;
-  background-color: #40005d;
-  border: 1px solid #fff;
-  padding: 0.3rem;
-  border-radius: 12px;
-} */
 
 .task-item__header{
   display: flex;
@@ -115,6 +127,19 @@ body {
   background-color: #4b4b4b;
   color: #fff;
   border-radius: 10px;
+}
+
+.task-project{
+  color:#9E9E9E;
+  font-size: 13px;
+}
+
+.task-to-do {
+  font-size: 22px;
+}
+
+.task-item__deadline{
+  font-size: 10px;
 }
 
 .backdrop-modal{

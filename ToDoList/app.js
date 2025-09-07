@@ -4,7 +4,26 @@ app.listen(3000, () => console.log('Listening at 3000'));
 app.use(express.static('public'));
 app.use(express.json());
 
-const database = [];
+const database = [
+  {
+    user: 'ajnl',
+    task: 'dall;jv',
+    description: 'vall',
+    id: '0.26830729758056412',
+  },
+  {
+    user: 'aavvljnl',
+    task: 'dmvmavjv',
+    description: 'pa',
+    id: '0.26830729758056413',
+  },
+  {
+    user: 'ajmv;mvnl',
+    task: 'dvmamjv',
+    description: 'v,daav',
+    id: '0.26830729758056415',
+  },
+];
 
 app.post('/api', (request, response) => {
   console.log('I got a post request');
