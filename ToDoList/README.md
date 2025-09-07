@@ -5,7 +5,7 @@ A short description of your project — what it does and why it matters.
 ## 📦 Features
 
 - You can add new tasks
-- Feature 2
+- Yu can delete tasks
 - Feature 3
 
 ## 🛠️ Installation
@@ -20,6 +20,9 @@ cd ./ToDoList
 # Install dependencies
 npm install
 
+# Build js
+npm run build
+
 # Start the app
-npm run
+npm start
 ```

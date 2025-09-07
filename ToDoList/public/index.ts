@@ -1,3 +1,7 @@
+import showItems from "./scripts/fetch/fetchShow.js";
+import TaskData from "./scripts/interfaces/taskData.js";
+import ApiResponse from "./scripts/interfaces/apiResponce.js";
+
 const addPanel = document.getElementsByClassName(
   'controls',
 )[0] as HTMLFormElement;
@@ -10,102 +14,8 @@ const taskName = document.getElementsByClassName(
 const taskDescription = document.getElementsByClassName(
   'taskDescription-label',
 )[0] as HTMLTextAreaElement;
-const tasks = document.getElementsByClassName(
-  'tasks-container',
-)[0] as HTMLElement;
-const backdropModal = document.getElementsByClassName(
-  'backdrop-modal',
-)[0] as HTMLElement;
 
 addPanel.addEventListener('submit', addTask);
-
-interface TaskData {
-  user: string;
-  task: string;
-  description: string;
-  id: string;
-}
-
-interface ApiResponse {
-  status: string;
-  database: TaskData[];
-}
-
-function closeModal() {
-  backdropModal.style.visibility = 'hidden';
-}
-
-async function deleteTask(id: string) {
-  const options: RequestInit = {
-    method: 'DELETE',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ id }),
-  };
-  const response = await fetch('/api', options);
-  const json: ApiResponse = await response.json();
-  console.log(json);
-  closeModal();
-  showItems(json);
-}
-
-function showItems(json) {
-  if (json.status === 'success') {
-    tasks.style.visibility = 'visible';
-    tasks.innerHTML = `
-        <div class='task-item__header'>
-          <span class='task-userName__header'>User name</span>
-          <span class='task-item__name__header'>Task name</span>
-          <span class='task-item__description__header'>Task description</span>
-        </div>`;
-    json.database.forEach((item: TaskData) => {
-      const newTask = document.createElement('div');
-      newTask.classList.add('task-item');
-      newTask.id = item.id;
-
-      newTask.innerHTML = `
-        <span class='task-userName'>${item.user}</span>
-        <span class='task-item__name'>${item.task}</span>
-        <span class='task-item__description'>${item.description}</span>
-    `;
-
-      newTask.addEventListener('click', (event) => {
-        event.preventDefault();
-        handleTaskClick(item.user, item.task, item.description, item.id);
-      });
-
-      tasks.appendChild(newTask);
-    });
-  }
-}
-
-function handleTaskClick(
-  user: string,
-  task: string,
-  description: string,
-  id: string,
-) {
-  const modal = backdropModal.children[0] as HTMLElement;
-  const data: TaskData = { user, task, description, id };
-  console.log(data);
-
-  modal.innerHTML = `
-      <button class="modal_close-botton" type="button" onclick="closeModal();">
-        Close
-      </button>
-      <div class="task">
-        <div class='task-userName'>Username: ${data.user}</div>
-        <div class='task-item__name'>Task name: ${data.task}</div>
-        <div>Description:</div>
-        <div class='task-item__description'>${data.description}</div>
-      </div>
-      <button class="modal_delete-botton" type="button" onclick="deleteTask(${data.id});">
-        Delete
-      </button>  
-    `;
-  backdropModal.style.visibility = 'visible';
-}
 
 fetch('/api')
   .then((response) => response.json())
@@ -139,18 +49,4 @@ async function addTask(event: Event): Promise<void> {
   showItems(json);
 }
 
-function createWindow(item) {
-  const modal = backdropModal.children[0] as HTMLElement;
 
-  modal.innerHTML = `
-      <div>
-        <div>
-          <span class='task-userName'>${item.user}</span>
-          <span class='task-item__name'>${item.task}</span>
-        </div>
-        <div>
-           <span class='task-item__description'>${item.description}</span>
-        </div>
-      </div>  
-    `;
-}
