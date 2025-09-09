@@ -1,6 +1,5 @@
 import ApiResponse from "../interfaces/apiResponce.js";
 import showItems from "../fetch/fetchShow.js";
-import { closeModal } from "../modalFunctions.js";
 
 export default async function deleteTask(id: string) {
   const options: RequestInit = {
@@ -13,6 +12,5 @@ export default async function deleteTask(id: string) {
   const response = await fetch('/api', options);
   const json: ApiResponse = await response.json();
   console.log(json);
-  closeModal();
   showItems(json);
 }

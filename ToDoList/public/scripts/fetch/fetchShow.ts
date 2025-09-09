@@ -1,11 +1,6 @@
-import { handleTaskClick } from "../modalFunctions.js";
+import TaskData from "../interfaces/taskData.js";
+import deleteTask from "./fetchDelete.js";
 const tasks = document.querySelector(".tasks-container") as HTMLElement;
-interface TaskData {
-  user: string;
-  task: string;
-  description: string;
-  id: string;
-}
 
 export default function showItems(json: any) {
   if (json.status === 'success' && json.database.length != 0) {
@@ -21,19 +16,25 @@ export default function showItems(json: any) {
           <input name="checkbox" class='task-checkbox' type='checkbox'/>
           <div>
             <div class='task-to_do'>${item.task}</div>
-            <div class='task-project'>${item.task}</div>
-            <div class='task-item__deadline'>${item.description}</div>
+            <div class='task-project'>${item.project}</div>
+            <div class='task-item__deadline'>${item.date}</div>
           </div>
         </label>
-        <span class='task-item__delete'>...<span/>
+        <span class='task-item__delete' id="${item.id}">...<span/>
       `;
       
       const deleteButton = newTask.querySelector(".task-item__delete") as HTMLElement;
       deleteButton.addEventListener('click', (event) => {
         event.preventDefault();
-        handleTaskClick(item.user, item.task, item.description, item.id);
+        deleteTask(item.id);
       });
       tasks.appendChild(newTask);
     });
   }
 }
+
+// function dateCheck(date: Date) {
+//   const currentDate = Date.now();
+
+//   return new Date(
+// }

@@ -6,21 +6,21 @@ app.use(express.json());
 
 const database = [
   {
-    user: 'ajnl',
     task: 'dall;jv',
-    description: 'vall',
+    project: 'ajnl',
+    date: '452133133',
     id: '0.26830729758056412',
   },
   {
-    user: 'aavvljnl',
     task: 'dmvmavjv',
-    description: 'pa',
+    project: 'aavvljnl',
+    date: '1331331334',
     id: '0.26830729758056413',
   },
   {
-    user: 'ajmv;mvnl',
     task: 'dvmamjv',
-    description: 'v,daav',
+    project: 'ajmv;mvnl',
+    date: '13313313',
     id: '0.26830729758056415',
   },
 ];

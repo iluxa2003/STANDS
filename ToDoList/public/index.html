@@ -10,46 +10,54 @@
     <header></header>
     <main>
       <div class="backdrop-modal">
-        <div class="task-modal"></div>
+        <div class="task-modal">
+          <button type="button" class="modal_close-button">+</button>
+          <form class="controls">
+            <div class="new-task__controls">
+              <div class="new-task__control">
+                <label for="name">Task name</label>
+                <input
+                  id="name"
+                  type="text"
+                  class="taskName-label"
+                  required="true"
+                  maxlength="50"
+                  placeholder="Name your task!"
+                  autocomplete="off"
+                />
+              </div>
+              <div class="new-task__control">
+                <label for="project">Project</label>
+                <select id="project" name="project" class="new-task__project">
+                  <option value="Home">Home</option>
+                  <option value="Personal">Personal</option>
+                  <option value="SIMA">SIMA</option>
+                  <option value="ABC">ABC</option>
+                </select>
+              </div>
+              <div class="new-task__control">
+                <label for="date">Date</label>
+                <input
+                  id="date"
+                  type="date"
+                  class="taskDate-label"
+                  autocomplete="off"
+                />
+              </div>
+            </div>
+            <div class="new-task__actions">
+              <button type="submit">Done</button>
+            </div>
+          </form>
+        </div>
       </div>
       <section>
         <h1>Today</h1>
-        <form class="controls">
-          <div class="new-task__controls">
-            <div class="new-task__control">
-              <label>Your name</label>
-              <input
-                type="text"
-                class="userName-label"
-                required="true"
-                maxlength="50"
-              />
-            </div>
-            <div class="new-task__control">
-              <label>Task name</label>
-              <input
-                type="text"
-                class="taskName-label"
-                required="true"
-                maxlength="50"
-              />
-            </div>
-            <div class="new-task__control">
-              <label>Short description</label>
-              <textarea
-                class="taskDescription-label"
-                required="true"
-                maxlength="50"
-              ></textarea>
-            </div>
-          </div>
-          <div class="new-task__actions">
-            <button type="submit">Add task</button>
-          </div>
-        </form>
       </section>
       <section class="tasks">
         <div class="tasks-container"></div>
+        <button class="task-create" type="button">Add task</button>
+        <button class="task-create phone" type="button">+</button>
       </section>
     </main>
     <footer></footer>

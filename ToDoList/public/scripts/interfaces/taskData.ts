@@ -1,6 +1,6 @@
 export default interface TaskData {
-  user: string;
   task: string;
-  description: string;
+  project: string;
+  date: string;
   id: string;
 }
