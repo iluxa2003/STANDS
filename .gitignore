@@ -1,6 +1,12 @@
 # Node stuff
 ToDoList/node_modules
+node_modules
 
 #toDoList builds
 
 ToDoList/public/js
+
+#linter
+
+.prettierrc
+eslintrc.json

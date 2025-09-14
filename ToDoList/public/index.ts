@@ -1,11 +1,15 @@
-import ApiResponse from "./scripts/interfaces/apiResponce.js";
-import showItems from "./scripts/fetch/fetchShow.js";
-import addTask from "./scripts/fetch/fetchAdd.js";
-import { openModal } from "./scripts/modalFunctions.js";
+import ApiResponse from './scripts/interfaces/apiResponce';
+import showItems from './scripts/fetch/fetchShow';
+import addTask from './scripts/fetch/fetchAdd';
+import { openModal } from './scripts/modalFunctions';
 
 const addPanel = document.querySelector('.controls') as HTMLFormElement;
-const tasksCreate = document.querySelector('.task-create') as HTMLTextAreaElement;
-const tasksCreatePhone = document.querySelector('.task-create.phone') as HTMLTextAreaElement;
+const tasksCreate = document.querySelector(
+  '.task-create',
+) as HTMLTextAreaElement;
+const tasksCreatePhone = document.querySelector(
+  '.task-create.phone',
+) as HTMLTextAreaElement;
 
 addPanel.addEventListener('submit', addTask);
 tasksCreate.addEventListener('click', openModal);
@@ -16,7 +20,3 @@ fetch('/api')
   .then((json: ApiResponse) => {
     showItems(json);
   });
-
-
-
-

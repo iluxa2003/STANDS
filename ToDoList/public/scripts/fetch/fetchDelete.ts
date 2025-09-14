@@ -1,5 +1,5 @@
-import ApiResponse from "../interfaces/apiResponce.js";
-import showItems from "../fetch/fetchShow.js";
+import ApiResponse from '../interfaces/apiResponce.js';
+import showItems from '../fetch/fetchShow.js';
 
 export default async function deleteTask(id: string) {
   const options: RequestInit = {

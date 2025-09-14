@@ -1,15 +1,17 @@
-import TaskData from "../interfaces/taskData.js";
-import ApiResponse from "../interfaces/apiResponce.js";
-import { closeModal } from "../modalFunctions.js";
-import showItems from "./fetchShow.js";
+import TaskData from '../interfaces/taskData.js';
+import ApiResponse from '../interfaces/apiResponce.js';
+import { closeModal } from '../modalFunctions.js';
+import showItems from './fetchShow.js';
 
 const taskDate = document.querySelector('.taskDate-label') as HTMLInputElement;
 const taskName = document.querySelector('.taskName-label') as HTMLInputElement;
-const taskProject = document.querySelector('.new-task__project') as HTMLTextAreaElement;
+const taskProject = document.querySelector(
+  '.new-task__project',
+) as HTMLTextAreaElement;
 
 export default async function addTask(event: Event): Promise<void> {
   event.preventDefault();
-  
+
   const task = taskName.value;
   const project = taskProject.value;
   const date = taskDate.value;

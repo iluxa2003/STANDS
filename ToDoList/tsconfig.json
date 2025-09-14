@@ -5,7 +5,7 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
-    "module": "ESNext",
+    "module": "commonjs",
     "outDir": "public/js",
     "strict": true
   },

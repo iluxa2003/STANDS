@@ -5,7 +5,7 @@ A short description of your project — what it does and why it matters.
 ## 📦 Features
 
 - You can add new tasks
-- Yu can delete tasks
+- You can delete tasks
 - Feature 3
 
 ## 🛠️ Installation
