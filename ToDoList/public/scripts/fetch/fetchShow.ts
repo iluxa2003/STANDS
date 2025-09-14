@@ -2,6 +2,10 @@ import TaskData from '../interfaces/taskData.js';
 import deleteTask from './fetchDelete.js';
 const tasks = document.querySelector('.tasks-container') as HTMLElement;
 
+tasks.addEventListener('click', (event) => {
+  deleteImage(event);
+});
+
 export default function showItems(json: any) {
   if (json.status === 'success' && json.database.length !== 0) {
     tasks.style.visibility = 'visible';
@@ -21,19 +25,18 @@ export default function showItems(json: any) {
             ${dueField}
           </div>
         </label>
-        <span class='task-item__delete' id='${item.id}'><img src='./img/delete.png' alt='error'/><span/>
+        <span class='task-item__delete' ><img id='${item.id}' name='delete' src='./img/delete.png' alt='error'/><span/>
       `;
-
-      const deleteButton = newTask.querySelector(
-        '.task-item__delete',
-      ) as HTMLElement;
-      deleteButton.addEventListener('click', (event) => {
-        event.preventDefault();
-        deleteTask(item.id);
-      });
       tasksContainer.appendChild(newTask);
     });
     tasks.appendChild(tasksContainer);
+  }
+}
+function deleteImage(event: any) {
+  if (event.target.name === 'delete') {
+    deleteTask(event.target.id);
+  } else {
+    event.stopPropagation();
   }
 }
 
