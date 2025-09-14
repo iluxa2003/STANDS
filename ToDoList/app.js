@@ -27,16 +27,32 @@ const database = [
 
 app.post('/api', (request, response) => {
   console.log('I got a post request');
-  database.push(request.body);
-  console.log(database);
-  response.json({
-    status: 'success',
-    database,
-  });
+  console.log(typeof request.body.task === 'string');
+  console.log(typeof request.body.project === 'string');
+  console.log(typeof request.body.data);
+  console.log(typeof request.body.id === 'string');
+
+  if (
+    request.body.task.length <= 50 &&
+    typeof request.body.task === 'string' &&
+    typeof request.body.project === 'string' &&
+    // typeof request.body.data === 'number' &&
+    typeof request.body.id === 'string'
+  ) {
+    database.push(request.body);
+    response.json({
+      status: 'success',
+      database,
+    });
+  } else {
+    response.json({
+      status: 'failed',
+      database,
+    });
+  }
 });
 
 app.get('/api', (request, response) => {
-  console.log(request);
   response.json({
     status: 'success',
     database,
@@ -44,16 +60,17 @@ app.get('/api', (request, response) => {
 });
 
 app.delete('/api', (request, response) => {
-  console.log(request.body.id);
-  console.log(database);
-
-  const index = database.findIndex((task) => task.id == request.body.id);
+  const index = database.findIndex((task) => task.id === request.body.id);
   if (index > -1) {
     database.splice(index, 1);
+    response.json({
+      status: 'success',
+      database,
+    });
+  } else {
+    response.json({
+      status: 'failed',
+      database,
+    });
   }
-  response.json({
-    status: 'success',
-    database,
-    index,
-  });
 });

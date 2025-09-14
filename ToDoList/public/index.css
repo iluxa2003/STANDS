@@ -8,7 +8,7 @@ html {
 
 body {
   margin: 0;
-  background-color: #f5f6f8;
+  background-color: #f5f9fa;
 }
 
 h1 {
@@ -93,7 +93,7 @@ select {
   color: #fff;
   border-radius: 50%;
   margin-right: 1rem;
-  visibility: hidden;
+  visibility: hidden !important;
 }
 
 .controls {
@@ -107,14 +107,25 @@ select {
 
 .task-item {
   display: flex;
+  position: relative;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  padding: 2rem;
   margin: 1rem 0;
   background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.task-item__delete {
+  position: absolute;
+  top: 7%;
+  right: 1%;
+}
+
+.task-item__delete img {
+  width: 30px;
+  height: 30px;
 }
 
 .task-item span {
@@ -124,6 +135,8 @@ select {
 .task_container {
   display: flex;
   align-items: flex-start;
+  flex-grow: 1;
+  padding: 2rem;
 }
 
 .task-checkbox {
@@ -149,11 +162,13 @@ select {
 }
 
 .tasks-container {
+  font-family: sans-serif;
   padding: 1rem;
   margin: 2rem auto;
   width: 50rem;
   max-width: 95%;
   visibility: hidden;
+  z-index: -1;
 }
 
 .task-item__header {
@@ -180,6 +195,29 @@ select {
 
 .task-item__deadline {
   font-size: 10px;
+  padding: 3px;
+  border-radius: 5px;
+  width: fit-content;
+}
+
+.task-item__deadline.over {
+  color: #b62effb9;
+  background-color: #e9bdff90;
+}
+
+.task-item__deadline.low {
+  color: #8b97b8;
+  background-color: #eff6fd;
+}
+
+.task-item__deadline.med {
+  color: #ff7d279f;
+  background-color: #ffead9b8;
+}
+
+.task-item__deadline.high {
+  color: #e2999c;
+  background-color: #fff5f7;
 }
 
 .backdrop-modal {
@@ -253,13 +291,13 @@ select {
 
 @media (max-width: 600px) {
   .task-create {
-    visibility: hidden;
+    visibility: hidden !important;
   }
 
   .task-create.phone {
     position: fixed;
     bottom: 5%;
     right: 5%;
-    visibility: visible;
+    visibility: visible !important;
   }
 }

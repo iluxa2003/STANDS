@@ -11,6 +11,5 @@ export default async function deleteTask(id: string) {
   };
   const response = await fetch('/api', options);
   const json: ApiResponse = await response.json();
-  console.log(json);
   showItems(json);
 }

@@ -1,7 +1,7 @@
-import ApiResponse from './scripts/interfaces/apiResponce';
-import showItems from './scripts/fetch/fetchShow';
-import addTask from './scripts/fetch/fetchAdd';
-import { openModal } from './scripts/modalFunctions';
+import ApiResponse from './scripts/interfaces/apiResponce.js';
+import showItems from './scripts/fetch/fetchShow.js';
+import addTask from './scripts/fetch/fetchAdd.js';
+import { openModal } from './scripts/modalFunctions.js';
 
 const addPanel = document.querySelector('.controls') as HTMLFormElement;
 const tasksCreate = document.querySelector(

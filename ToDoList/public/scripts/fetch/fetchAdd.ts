@@ -14,7 +14,7 @@ export default async function addTask(event: Event): Promise<void> {
 
   const task = taskName.value;
   const project = taskProject.value;
-  const date = taskDate.value;
+  const date = new Date(taskDate.value).getTime();
   const id = Math.random().toString();
   const data: TaskData = { task, project, date, id };
 
