@@ -6,6 +6,7 @@ export default function showItems(json: any) {
   if (json.status === 'success' && json.database.length !== 0) {
     tasks.style.visibility = 'visible';
     tasks.innerHTML = ``;
+    const tasksContainer = document.createElement('div');
     json.database.forEach((item: TaskData) => {
       const newTask = document.createElement('div');
       newTask.classList.add('task-item');
@@ -30,8 +31,9 @@ export default function showItems(json: any) {
         event.preventDefault();
         deleteTask(item.id);
       });
-      tasks.appendChild(newTask);
+      tasksContainer.appendChild(newTask);
     });
+    tasks.appendChild(tasksContainer);
   }
 }
 
