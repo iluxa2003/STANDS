@@ -168,7 +168,6 @@ select {
   width: 50rem;
   max-width: 95%;
   visibility: hidden;
-  z-index: -1;
 }
 
 .task-item__header {

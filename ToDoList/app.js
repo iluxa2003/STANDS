@@ -6,20 +6,20 @@ app.use(express.json());
 
 const database = [
   {
-    task: 'dall;jv',
-    project: 'ajnl',
+    task: 'Cleaning',
+    project: 'Home',
     date: '452133133',
     id: '0.26830729758056412',
   },
   {
-    task: 'dmvmavjv',
-    project: 'aavvljnl',
+    task: 'Night walk',
+    project: 'Personal',
     date: '1331331334',
     id: '0.26830729758056413',
   },
   {
-    task: 'dvmamjv',
-    project: 'ajmv;mvnl',
+    task: 'Morning training',
+    project: 'Gym',
     date: '13313313',
     id: '0.26830729758056415',
   },
@@ -27,10 +27,6 @@ const database = [
 
 app.post('/api', (request, response) => {
   console.log('I got a post request');
-  console.log(typeof request.body.task === 'string');
-  console.log(typeof request.body.project === 'string');
-  console.log(typeof request.body.data);
-  console.log(typeof request.body.id === 'string');
 
   if (
     request.body.task.length <= 50 &&

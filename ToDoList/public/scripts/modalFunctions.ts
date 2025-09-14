@@ -11,6 +11,7 @@ closeModalButton.addEventListener('click', closeModal);
 
 export function closeModal() {
   backdropModal.style.visibility = 'hidden';
+  backdropModal.style.zIndex = '0';
   if (window.innerWidth <= 600) {
     phoneAddButton.style.visibility = 'visible';
   }
@@ -21,6 +22,7 @@ export function closeModal() {
 
 export function openModal() {
   backdropModal.style.visibility = 'visible';
+  backdropModal.style.zIndex = '100';
   if (window.innerWidth <= 600) {
     phoneAddButton.style.visibility = 'hidden';
   }
