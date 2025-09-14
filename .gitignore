@@ -1,10 +1,8 @@
-# Node stuff
-# ToDoList/node_modules
-node_modules
-
 #toDoList builds
 
 ToDoList/public/js
+# Node
+node_*
 
 #linter
 
