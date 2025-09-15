@@ -26,8 +26,6 @@ const database = [
 ];
 
 app.post('/api', (request, response) => {
-  console.log('I got a post request');
-
   if (
     request.body.task.length <= 50 &&
     typeof request.body.task === 'string' &&
