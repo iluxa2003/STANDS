@@ -10,7 +10,7 @@ const taskProject = document.querySelector(
 ) as HTMLTextAreaElement;
 
 export default async function addTask(event: Event): Promise<void> {
-  event.preventDefault();
+  // event.preventDefault();
 
   const task = taskName.value;
   const project = taskProject.value;
