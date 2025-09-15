@@ -32,7 +32,7 @@ app.post('/api', (request, response) => {
     request.body.task.length <= 50 &&
     typeof request.body.task === 'string' &&
     typeof request.body.project === 'string' &&
-    // typeof request.body.data === 'number' &&
+    typeof request.body.date === 'number' &&
     typeof request.body.id === 'string'
   ) {
     database.push(request.body);
