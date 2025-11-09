@@ -1,6 +1,4 @@
-CREATE DATABASE todo
-
-CREATE TABLE todotable(
+CREATE TABLE IF NOT EXISTS ToDoTable(
     id SERIAL PRIMARY KEY,
     task VARCHAR(255),
     project VARCHAR(255),

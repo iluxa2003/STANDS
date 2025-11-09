@@ -2,13 +2,13 @@
   "compilerOptions": {
     "target": "ES2020",
     "moduleResolution": "node",
-    "strict": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
 
-    "module": "commonjs",
-    "outDir": "build"
+    "module": "ESNext",
+    "outDir": "public/js",
+    "strict": true
   },
-  "include": ["src/backend"]
+  "include": ["public"]
 }

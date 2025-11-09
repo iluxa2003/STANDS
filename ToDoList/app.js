@@ -2,10 +2,11 @@ const express = require('express');
 const app = express();
 // const cors = require('cors');
 const pool = require('./dbConfig');
-const { schema } = require('./shemas/toDoTask');
+const path = require('path');
+const { schema } = require('./schemas/toDoTask');
 
 app.listen(3000, () => console.log('Listening at 3000'));
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 // app.use(cors());
 app.use(express.json());
 
