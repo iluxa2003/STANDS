@@ -1,5 +1,4 @@
-import TaskData from '../interfaces/taskData.js';
-import ApiResponse from '../interfaces/apiResponce.js';
+import { TaskData, ApiResponse } from '../interfaces/interfaces.js';
 import { closeModal } from '../modalFunctions.js';
 import showItems from './fetchShow.js';
 
@@ -9,9 +8,7 @@ const taskProject = document.querySelector(
   '.new-task__project',
 ) as HTMLTextAreaElement;
 
-export default async function addTask(event: Event): Promise<void> {
-  // event.preventDefault();
-
+export default async function addTask(): Promise<void> {
   const task = taskName.value;
   const project = taskProject.value;
   const date = new Date(taskDate.value).getTime();

@@ -1,8 +1,7 @@
-import ApiResponse from './scripts/interfaces/apiResponce.js';
 import showItems from './scripts/fetch/fetchShow.js';
 import addTask from './scripts/fetch/fetchAdd.js';
 import { openModal } from './scripts/modalFunctions.js';
-import TaskData from './scripts/interfaces/taskData.js';
+import { TaskData, ApiResponse } from './scripts/interfaces/interfaces.js';
 
 const addPanel = document.querySelector('.controls') as HTMLFormElement;
 const filter = document.querySelector('.project-filter') as HTMLFormElement;

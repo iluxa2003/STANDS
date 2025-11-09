@@ -1,4 +1,4 @@
-import TaskData from '../interfaces/taskData.js';
+import { TaskData, ApiResponse } from '../interfaces/interfaces.js';
 import deleteTask from './fetchDelete.js';
 const tasks = document.querySelector('.tasks-container') as HTMLElement;
 
@@ -6,8 +6,8 @@ tasks.addEventListener('click', (event) => {
   deleteImage(event);
 });
 
-export default function showItems(json: any) {
-  if (json.status === 'success' && json.database.length !== 0) {
+export default function showItems(json: ApiResponse) {
+  if (json.status === 'success') {
     tasks.style.visibility = 'visible';
     tasks.innerHTML = ``;
     const tasksContainer = document.createElement('div');
@@ -35,18 +35,16 @@ export default function showItems(json: any) {
 function deleteImage(event: any) {
   if (event.target.name === 'delete') {
     deleteTask(event.target.id);
-  } else {
-    event.stopPropagation();
   }
 }
 
 function dateTag(date: number) {
-  const Day = 24 * 60 * 60 * 1000;
-  const Week = 7 * Day;
+  const day = 24 * 60 * 60 * 1000;
+  const week = 7 * day;
   const today = new Date().getTime();
   const diff = date - today;
   if (diff < 0) return '<div class="task-item__deadline over">Overdue</div>';
-  if (diff <= Day) return '<div class="task-item__deadline high">High</div>';
-  if (diff <= Week) return '<div class="task-item__deadline med">Medium</div>';
-  if (diff > Week) return '<div class="task-item__deadline low">Low</div>';
+  if (diff <= day) return '<div class="task-item__deadline high">High</div>';
+  if (diff <= week) return '<div class="task-item__deadline med">Medium</div>';
+  if (diff > week) return '<div class="task-item__deadline low">Low</div>';
 }
