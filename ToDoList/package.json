@@ -6,7 +6,9 @@
   "scripts": {
     "start": "node ./app.js",
     "build": "tsc -p tsconfig.json",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dockerUp": "docker compose up --build",
+    "dockerDown": "docker compose down -v"
   },
   "author": "Ilya Yakovlev",
   "license": "MIT",

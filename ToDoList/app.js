@@ -1,14 +1,16 @@
 const express = require('express');
 const app = express();
-// const cors = require('cors');
 const pool = require('./dbConfig');
 const path = require('path');
 const { schema } = require('./schemas/toDoTask');
 
-app.listen(3000, () => console.log('Listening at 3000'));
-app.use(express.static(path.join(__dirname, 'public')));
-// app.use(cors());
-app.use(express.json());
+try {
+  app.listen(3000, () => console.log('Listening at 3000'));
+  app.use(express.static(path.join(__dirname, 'public')));
+  app.use(express.json());
+} catch (error) {
+  console.log(error);
+}
 
 app.post('/api', async (request, response) => {
   try {
@@ -31,7 +33,7 @@ app.post('/api', async (request, response) => {
 });
 
 app.get('/api', async (request, response) => {
-  const getToDo = await pool.query('SELECT * FROM ToDoTable');
+  const getToDo = await pool.query('SELECT * FROM todotable');
   response.json({
     status: 'success',
     database: getToDo.rows,
@@ -39,8 +41,8 @@ app.get('/api', async (request, response) => {
 });
 
 app.delete('/api', async (request, response) => {
-  await pool.query('DELETE FROM ToDoTable WHERE id = $1', [request.body.id]);
-  const getToDo = await pool.query('SELECT * FROM ToDoTable');
+  await pool.query('DELETE FROM todotable WHERE id = $1', [request.body.id]);
+  const getToDo = await pool.query('SELECT * FROM todotable');
   response.json({
     status: 'success',
     database: getToDo.rows,
