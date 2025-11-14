@@ -14,7 +14,7 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: Blin123412341234
-      POSTGRES_DB: TODO
+      POSTGRES_DB: todo
     volumes:
       - db-data:/var/lib/postgresql/data
       - ./database.sql:/docker-entrypoint-initdb.d/01-init.sql
