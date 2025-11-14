@@ -6,7 +6,8 @@ return new Pool({
   password: 'Blin123412341234',
   host: 'db',
   port: 5432,
-  database: 'todo',
+  database: 'TODO',
+  table: 'ToDoTable'
 });
 }
 module.exports = createDatabasePool;
