@@ -5,7 +5,7 @@ services:
     environment:
       NODE_ENV: production
     ports:
-      - "3000:3000"
+      - '3000:3000'
     depends_on:
       - db
 
@@ -14,12 +14,12 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: Blin123412341234
-      POSTGRES_DB: TODO
+      POSTGRES_DB: todo
     volumes:
       - db-data:/var/lib/postgresql/data
-      - ./database.sql:/docker-entrypoint-initdb.d/01-init.sql
+      - ./core/database.sql:/docker-entrypoint-initdb.d/01-init.sql
     ports:
-      - "5432:5432"
+      - '5432:5432'
 
 volumes:
   db-data:

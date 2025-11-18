@@ -31,9 +31,6 @@ RUN npm ci --omit=dev
 COPY . .
 
 RUN npm run build
-# Expose the port that the application listens on.
-EXPOSE 3000
-EXPOSE 5432
 
 # Run the application.
 CMD ["npm", "start"]

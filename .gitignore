@@ -1,6 +1,7 @@
 #toDoList builds
 
 ToDoList/public/js
+ToDoList/build
 # Node
 node_*
 
