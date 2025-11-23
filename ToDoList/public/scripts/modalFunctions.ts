@@ -1,4 +1,4 @@
-import addTask from './fetch/fetchAdd.js';
+import addTask from './fetch/fetchAddTask.js';
 import { modalCreateView } from './view/modalView.js';
 const backdropModal = document.querySelector('.backdrop-modal') as HTMLElement;
 const phoneAddButton = document.querySelector(

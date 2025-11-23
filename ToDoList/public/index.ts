@@ -1,4 +1,4 @@
-import showItems from './scripts/fetch/fetchShow.js';
+import showItems from './scripts/fetch/fetchShowTasks.js';
 import { openModal } from './scripts/modalFunctions.js';
 import { TaskData, ApiResponse } from './scripts/interfaces/interfaces.js';
 

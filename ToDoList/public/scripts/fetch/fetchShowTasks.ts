@@ -1,5 +1,5 @@
 import { TaskData, ApiResponse } from '../interfaces/interfaces.js';
-import deleteTask from './fetchDelete.js';
+import deleteTask from './fetchDeleteTask.js';
 import taskView from '../view/taskView.js';
 const tasks = document.querySelector('.tasks-container') as HTMLElement;
 

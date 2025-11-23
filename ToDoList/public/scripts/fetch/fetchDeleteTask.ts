@@ -1,5 +1,5 @@
 import { ApiResponse } from '../interfaces/interfaces.js';
-import showItems from '../fetch/fetchShow.js';
+import showItems from './fetchShowTasks.js';
 
 export default async function deleteTask(id: string) {
   const options: RequestInit = {
@@ -9,7 +9,7 @@ export default async function deleteTask(id: string) {
     },
     body: JSON.stringify({ id }),
   };
-  const response = await fetch('/api', options);
+  const response = await fetch('/api/toDoTable', options);
   const json: ApiResponse = await response.json();
   showItems(json);
 }

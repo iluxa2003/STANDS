@@ -1,6 +1,6 @@
 import { TaskData, ApiResponse } from '../interfaces/interfaces.js';
 import { closeModal } from '../modalFunctions.js';
-import showItems from './fetchShow.js';
+import showItems from './fetchShowTasks.js';
 
 export default async function addTask(
   taskName: HTMLInputElement,
