@@ -2,14 +2,20 @@
   box-sizing: border-box;
 }
 
+h1{
+  margin: 0;
+}
+
 body {
   margin: 0;
   background-color: #f5f9fa;
   font-family: 'Montserrat', sans-serif;
 }
 
-h1 {
-  margin-left: 20px;
+.top-panel {
+  display: flex;
+  justify-content: space-between;
+  margin: 30px 20px;
 }
 
 .new-task__controls {
@@ -240,7 +246,7 @@ select {
   background: rgba(0, 0, 0, 0.2);
 }
 
-.task-modal {
+.modal {
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -253,7 +259,7 @@ select {
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
 }
 
-.modal button {
+/* .modal button {
   position: relative;
   width: 30px;
   height: 30px;
@@ -264,7 +270,7 @@ select {
   border: 1px solid rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
   border-radius: 50%;
-}
+} */
 
 .modal_close-button {
   position: absolute;

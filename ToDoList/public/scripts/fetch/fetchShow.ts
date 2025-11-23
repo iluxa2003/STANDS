@@ -1,5 +1,6 @@
 import { TaskData, ApiResponse } from '../interfaces/interfaces.js';
 import deleteTask from './fetchDelete.js';
+import taskView from '../view/taskView.js';
 const tasks = document.querySelector('.tasks-container') as HTMLElement;
 
 tasks.addEventListener('click', (event) => {
@@ -16,22 +17,13 @@ export default function showItems(json: ApiResponse) {
       newTask.classList.add('task-item');
       newTask.id = item.id;
       const dueField = dateTag(item.date);
-      newTask.innerHTML = `
-        <label class="task_container">
-          <input name='checkbox' class='task-checkbox' type='checkbox'/>
-          <div>
-            <div class='task-to_do'>${item.task}</div>
-            <div class='task-project'>${item.project}</div>
-            ${dueField}
-          </div>
-        </label>
-        <span class='task-item__delete' ><img id='${item.id}' name='delete' src='./img/delete.png' alt='error'/><span/>
-      `;
+      newTask.innerHTML = taskView(item.task, item.project, dueField, item.id);
       tasksContainer.appendChild(newTask);
     });
     tasks.appendChild(tasksContainer);
   }
 }
+
 function deleteImage(event: any) {
   if (event.target.name === 'delete') {
     deleteTask(event.target.id);

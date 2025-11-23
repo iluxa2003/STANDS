@@ -17,7 +17,8 @@ services:
       POSTGRES_DB: todo
     volumes:
       - db-data:/var/lib/postgresql/data
-      - ./core/database.sql:/docker-entrypoint-initdb.d/01-init.sql
+      - ./core/todos.sql:/docker-entrypoint-initdb.d/01-init.sql
+      - ./core/users.sql:/docker-entrypoint-initdb.d/02-init.sql
     ports:
       - '5432:5432'
 

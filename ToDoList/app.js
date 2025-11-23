@@ -22,7 +22,7 @@ try {
   console.log(error);
 }
 
-app.post('/api', async (request, response) => {
+app.post('/api/toDoTable', async (request, response) => {
   try {
     schema.validate(request.body);
     const { task, project, date, id } = request.body;
@@ -42,10 +42,9 @@ app.post('/api', async (request, response) => {
   }
 });
 
-app.get('/api', async (request, response) => {
+app.get('/api/toDoTable', async (request, response) => {
   try {
     const getToDo = await getFunk(pool);
-    // logsContainer.push(log('INFO', 'New task created'));
     response.json({
       status: 'success',
       database: getToDo.rows,
@@ -61,7 +60,7 @@ app.get('/api', async (request, response) => {
   }
 });
 
-app.delete('/api', async (request, response) => {
+app.delete('/api/toDoTable', async (request, response) => {
   try {
     await deleteFunk(request.body.id, pool);
     const getToDo = await getFunk(pool);

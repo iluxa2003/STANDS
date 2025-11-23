@@ -2,13 +2,11 @@ import { TaskData, ApiResponse } from '../interfaces/interfaces.js';
 import { closeModal } from '../modalFunctions.js';
 import showItems from './fetchShow.js';
 
-const taskDate = document.querySelector('.taskDate-label') as HTMLInputElement;
-const taskName = document.querySelector('.taskName-label') as HTMLInputElement;
-const taskProject = document.querySelector(
-  '.new-task__project',
-) as HTMLTextAreaElement;
-
-export default async function addTask(): Promise<void> {
+export default async function addTask(
+  taskName: HTMLInputElement,
+  taskProject: HTMLTextAreaElement,
+  taskDate: HTMLInputElement
+): Promise<void> {
   const task = taskName.value;
   const project = taskProject.value;
   const date = new Date(taskDate.value).getTime();
@@ -23,7 +21,7 @@ export default async function addTask(): Promise<void> {
     body: JSON.stringify(data),
   };
 
-  const response = await fetch('/api', options);
+  const response = await fetch('/api/toDoTable', options);
   const json: ApiResponse = await response.json();
 
   showItems(json);
